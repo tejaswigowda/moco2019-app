@@ -28,9 +28,9 @@
   line-height: 80px;
   -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
-    transition: -webkit-transform ease-out 200ms;
-    transition: transform ease-out 200ms;
-  transition: transform ease-out 200ms, -webkit-transform ease-out 200ms;
+    transition: -webkit-transform ease-out 500ms;
+    transition: transform ease-out 500ms;
+  transition: transform ease-out 500ms, -webkit-transform ease-out 200ms;
 }
 
 .menu-open {
@@ -142,13 +142,14 @@
   background:transparent;
 }
 .menu-open:checked + .menu-open-button h1{
-  transform: scale(5) translate3d(0, 0, 0);
   border:none;
   display: block;
   position: fixed;
-  height: 80px;
-  width: 86px;
-  border-radius: 35px;
+  height: 290px;
+  width: 290px;
+  border-radius: 50%;
+  margin-left: -20px;
+  margin-top: -10px;
 }
 
 .menu-open:checked ~ .menu-item {
@@ -171,8 +172,8 @@
 }
 .menu-open:checked ~ .menu-item:nth-child(6) {
   transition-duration: all ease-out 480ms;
-  margin-left :5px;
-  margin-top: 320px;
+  margin-left:5px;
+  margin-top: 326px;
 }
 .menu-open:checked ~ .menu-item:nth-child(7) {
   transition-duration: 580ms;
@@ -336,9 +337,8 @@ body.menuVisible
 	cursor: pointer;
 	display: block;
   padding: 10px 0px 10px 0px;
-  font-size: 18px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: normal;
 }
 
@@ -360,7 +360,7 @@ body.menuVisible
 	height:0px;
 	overflow:hidden;
 	z-index:10;
-  transition: .2s;
+  transition: .2s linear;
 }
 #accordion article p {
 	padding: 1em;
@@ -371,7 +371,7 @@ body.menuVisible
 	border-bottom-left-radius: .25em;
 	border-bottom-right-radius: .25em;
 	height: auto;
-	margin-bottom: .125em;
+	margin-bottom: 25px;
 }
 
 
@@ -472,10 +472,11 @@ span.blueDot{
     width: 20px;
     background-image: url(../images/blueDot.png);
     display: inline-block;
-    background-size: 30px;
+    background-size: 40px;
     background-position: 50%;
     vertical-align: middle;
     margin: 0 5px 0 0;
+    border-radius: 50%;
 }
 
 
@@ -484,7 +485,7 @@ span.greenDot{
     width: 20px;
     background-image: url(../images/greenDot.png);
     display: inline-block;
-    background-size: 30px;
+    background-size: 40px;
     background-position: 50%;
     vertical-align: middle;
     margin: 0 5px 0 0;
@@ -497,7 +498,7 @@ span.yellowDot{
     width: 20px;
     background-image: url(../images/yellowDot.png);
     display: inline-block;
-    background-size: 30px;
+    background-size: 40px;
     background-position: 50%;
     vertical-align: middle;
     margin: 0 5px 0 0;
@@ -508,6 +509,19 @@ span.clock{
     height: 30px;
     width: 30px;
     background-image: url(../images/clock.png);
+    display: inline-block;
+    background-size: 30px;
+    background-position: 50%;
+    vertical-align: middle;
+    margin: 0 4px 0 0;
+    border-radius: 50%;
+}
+
+
+span.cup{
+    height: 30px;
+    width: 30px;
+    background-image: url(../images/cup.png);
     display: inline-block;
     background-size: 30px;
     background-position: 50%;
@@ -542,13 +556,18 @@ span.bio{
 }
 
 
+.pcard h3{
+  font-weight:normal;
+}
+
+
 article, .article,
 .pcard h3,
 .pcard h4
 {
   margin-left: auto;
   margin-right: 0px;
-  width: calc(100% - 70px);
+  width: calc(100% - 60px);
   margin-top: -5px;
   margin-bottom: 15px;
 }
@@ -590,8 +609,8 @@ article, .article,
   border: none;
   outline: none;
   background-image: url(../images/back.png);
-  background-position: 55px 50%;
-  background-size: 40px;
+  background-position: 60px 50%;
+  background-size: 25px;
   background-repeat: no-repeat;
   box-shadow:rgb(219, 218, 166) 0px 15px 20px;
   border-radius: 50%;
@@ -648,4 +667,62 @@ article, .article,
     width: calc(100% - 40px);
 }
 
+.fwnormal{
+  font-weight:normal;
+}
+
+.legend span{
+  margin-left: 20px;
+  margin-right: 2px;
+}
+
+
+.social-media a{
+  display: inline-block;
+}
+
+.mouseSupport .social-media a:hover,
+.touchSupport .social-media a:active{
+  background:transparent;
+  text-shadow:none;
+  transform:scale(1.4);
+  transition: .2s;
+}
+
+
+.open .headerText
+{
+  opacity: 0;
+}
+
+.headerText
+{
+    bottom: 10px;
+    position: absolute;
+    width: 50vw;
+    height: 20px;
+    transition: .2s;
+}
+
+#headerTextL{
+   transform: rotate(20deg);
+   text-transform: uppercase;
+   font-size: 120%;
+}
+
+#headerTextR{
+  transform: rotate(-14deg);
+  right: 30px;
+  bottom: auto;
+  margin-top: 58px;
+}
+
+.article a{
+  text-decoration: none;
+}
+
+
+.menu-open-button h1
+{
+  border-radius: 50%;
 }

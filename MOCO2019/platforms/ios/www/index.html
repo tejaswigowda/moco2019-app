@@ -5,9 +5,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta content="width=device-width, initial-scale=1, maximum-width=device-width, maximum-scale=1" name="viewport">
   <script src='res/js/asyncReq.js'></script>
-
-
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' gap://ready file://* *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 <script>
  var hash = window.location.hash.replace("#","").split(",");
  var main = function(){
@@ -19,21 +17,42 @@
   menuToggled();
   loadFile("./res/pages/contact.html", function(data){$("#contact").html(data)});
   loadFile("./res/pages/speakers.html", function(data){$("#speakers").html(data)});
-  loadFile("./res/pages/program.html", function(data){$("#program").html(data)});
   swipeDetectorInit();
+  loadProgram();
+  StatusBar.overlaysWebView(false);
  }
 
+ function loadProgram(){
+  loadFile("./res/pages/program.html",function(data){$("#program").html(data)});return;
+  
+
+  loadFile("https://tejaswigowda.github.io/moco2019-draft/res/pages/program.html",function(res){
+    if(res.length && res.length > 500){
+      localStorage.setItem("res", res);
+      $("#program").html(res);
+    }
+    else{
+      if(localStorage.getItem("res")){
+        $("#program").html(res);
+      }
+      else{
+        loadFile("./res/pages/program.html", function(data){$("#program").html(data)});
+      }
+    }
+
+  });
+ }
 
 
 </script>
 </head>
 <body onload='main()' style='margin:0'>
 <div id='brand'></div>
-    <div style="position: fixed;height: 100vh;width: 100vw;text-align: center;background-color: rgba(255,255,255,0);z-index: 100000;" class="ac"><svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg" style="margin-top: 45vh;"> <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle> </svg> <h5 class="acText"></h5></div>
+    <div style="position: fixed;height: 100vh;width: 100vw;text-align: center;background-color: rgba(255,255,255,0);z-index: 100000;" class="ac"><svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg" style="margin-top: 75vh;"> <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle> </svg> <h5 class="acText"></h5></div>
   <!-- app content -->
     <div id='canvasWrapper'>
       <div id="maps" class="canvas">
-        <div style='height:120px;background:#5c6670'></div>
+        <div style='height:120px;background:#5c6670;margin-bottom:-1px'></div>
         <iframe id='mapFrame' allow="geolocation *;" src='https://map.m.asu.edu/?id=120#!ct/0' style='border:none;height:calc(100vh - 120px);width:100%;'></iframe>
       </div>
       <div id="speakers" class="canvas" style="">
@@ -68,7 +87,8 @@
   <button class='menuOption speakers' onclick='menuSelected("speakers")'>Speakers</button>
   <button class='menuOption program' onclick='menuSelected("program")'>Program</button>
   <button class='menuOption contact' onclick='menuSelected("contact")'>Contact</button>
-  <div id='headerText'></div>
+  <div class='headerText' id='headerTextL'></div>
+  <div class='headerText' id='headerTextR'></div>
   <button id='theLogo' onclick='goHome()'></button>
 </div>
 

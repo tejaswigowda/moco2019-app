@@ -15,6 +15,7 @@
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		FE9E3FFB38434F72A9006A47 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B20AD84A7594BA9B6B5E2AE /* CDVLocation.m */; };
 		AF9F35C9079940228217CEEC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7EFC4EE535F42009742541D /* CoreLocation.framework */; };
+		6459A03B153C41F4A0E68291 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FFE200BB891468490C11705 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		0B20AD84A7594BA9B6B5E2AE /* CDVLocation.m */ = {isa = PBXFileReference; name = "CDVLocation.m"; path = "cordova-plugin-geolocation/CDVLocation.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		3C9BB2A149524E58852E428A /* CDVLocation.h */ = {isa = PBXFileReference; name = "CDVLocation.h"; path = "cordova-plugin-geolocation/CDVLocation.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		E7EFC4EE535F42009742541D /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		0FFE200BB891468490C11705 /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		3C237CE65091452E85E6FC70 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +176,8 @@
 			children = (
 				0B20AD84A7594BA9B6B5E2AE /* CDVLocation.m */,
 				3C9BB2A149524E58852E428A /* CDVLocation.h */,
+				0FFE200BB891468490C11705 /* CDVStatusBar.m */,
+				3C237CE65091452E85E6FC70 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = MOCO2019/Plugins;
@@ -302,6 +307,7 @@
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
 				FE9E3FFB38434F72A9006A47 /* CDVLocation.m in Sources */,
+				6459A03B153C41F4A0E68291 /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

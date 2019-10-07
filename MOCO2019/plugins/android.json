@@ -12,6 +12,9 @@
     },
     "cordova-plugin-geolocation": {
       "PACKAGE_NAME": "com.fns.MOCO2019"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.fns.MOCO2019"
     }
   },
   "dependent_plugins": {}

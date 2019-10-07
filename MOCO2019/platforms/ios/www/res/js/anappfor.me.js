@@ -570,8 +570,37 @@ function goHome()
     $(".menu").fadeIn(100);
     $("body").addClass("menuVisible");
   }
+  else{
+    $("#theHeader").addClass("open");
+  }
 }
 
+function initWaypoints()
+{
+  var waypoint1 = new Waypoint({
+    element: document.getElementById('d1wp'),
+    offset: 130,
+    handler: function(direction) {
+      handleWP(1, direction);
+    }
+  });
+  var waypoint2 = new Waypoint({
+    element: document.getElementById('d2wp'),
+    offset: 130,
+    handler: function(direction) {
+      handleWP(2, direction);
+    }
+  });
+  var waypoint3 = new Waypoint({
+    element: document.getElementById('d3wp'),
+    offset: 130,
+    handler: function(direction) {
+      handleWP(3, direction);
+    }
+  });
+}
+
+var wpInit = false; 
 function menuSelected(m)
 {
   $(".menuOption").removeClass("selected")
@@ -584,9 +613,14 @@ function menuSelected(m)
   $(".menu").fadeOut(100);
   $("body").removeClass("menuVisible");
   $(".menuOption."+ currMenu).addClass("selected")
+  $(".headerText").html("");
 
   if(currMenu === "program"){
     document.getElementById("theHeader").style.boxShadow = "0px 10px 20px #BDC9DE";
+    if(!wpInit){
+      wpInit = true;
+      initWaypoints();
+    }
   }
   else if(currMenu === "speakers"){
     document.getElementById("theHeader").style.boxShadow = "0px 10px 20px #DBDAA6";
@@ -636,12 +670,52 @@ function goto(n){
       document.getElementById("mapFrame").src = "https://map.m.asu.edu/?id=120#!m/63214?sbc/";
       menuSelected("maps");
       break;
+    case "fac":
+      document.getElementById("mapFrame").src = "https://map.m.asu.edu/?id=120#!m/62902?sbc/";
+      menuSelected("maps");
+      break;
     default:
       break;
   }
+  $("#headerTextL").html("");
+  $("#headerTextR").html("");
 }
 
 function gotoA(n){
    menuSelected("speakers");
    speakerClicked(n);
+}
+
+
+function handleWP(day, dir){
+  if(day == 1){
+    if(dir == "up"){
+      $("#headerTextL").html("");
+      $("#headerTextR").html("");
+    }
+    else{
+      $("#headerTextL").html("Day 1");
+      $("#headerTextR").html("Thu, October 10<sup>th</sup>");
+    }
+  }
+  else if(day == 2){
+    if(dir == "up"){
+      $("#headerTextL").html("Day 1");
+      $("#headerTextR").html("Thu, October 10<sup>th</sup>");
+    }
+    else{
+      $("#headerTextL").html("Day 2");
+      $("#headerTextR").html("Fri, October 11<sup>th</sup>");
+    }
+  }
+  else if(day == 3){
+    if(dir == "up"){
+      $("#headerTextL").html("Day 2");
+      $("#headerTextR").html("Fri, October 11<sup>th</sup>");
+    }
+    else{
+      $("#headerTextL").html("Day 3");
+      $("#headerTextR").html("Sat, October 12<sup>th</sup>");
+    }
+  }
 }
